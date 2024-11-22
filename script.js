@@ -21,6 +21,29 @@ function createStars(count) {
 // Generate 100 stars
 createStars(100);
 
+
+// // Function to generate random position for stars
+// function randomPosition(starElement) {
+//     const screenWidth = window.innerWidth;
+//     const screenHeight = window.innerHeight;
+
+//     // Random horizontal (left) and vertical (top) position
+//     const randomLeft = Math.random() * screenWidth;
+//     const randomTop = Math.random() * screenHeight;
+
+//     // Apply the random positions
+//     starElement.style.left = `${randomLeft}px`;
+//     starElement.style.top = `${randomTop}px`;
+
+//     // Repeat the random position every 10 seconds (or change duration as needed)
+//     setTimeout(() => randomPosition(starElement), 10000);
+// }
+
+// // Create stars and apply random movement
+// document.querySelectorAll('.star').forEach(star => {
+//     randomPosition(star);
+// });
+
 function createMeteor() {
     const meteor = document.createElement("div");
     meteor.classList.add("meteor");
