@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Image Upload and Analysis</title>
+</head>
+<body>
+  <div class="container">
+    <h1>🔍 Image Recognition</h1>
+    <p>Select an image to analyze its contents with AI-powered object detection.</p>
+    <form id="uploadForm">
+      <label class="custom-file-upload">
+        <input type="file" id="imageUpload" accept="image/*" required>
+        Choose Image
+      </label>
+      <button type="submit">Analyze Image</button>
+    </form>
+    <div id="uploadMessage"></div>
+    <div id="responseContainer"></div>
+    <div id="objectCount"></div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
