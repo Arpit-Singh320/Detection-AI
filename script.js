@@ -1,3 +1,76 @@
+
+const starsContainer = document.createElement("div");
+starsContainer.classList.add("stars");
+document.body.appendChild(starsContainer);
+
+// Generate random stars
+function createStars(count) {
+    for (let i = 0; i < count; i++) {
+        const star = document.createElement("div");
+        star.classList.add("star");
+
+        // Randomize star position and animation duration
+        star.style.top = `${Math.random() * 100}vh`;
+        star.style.left = `${Math.random() * 100}vw`;
+        star.style.animationDuration = `${Math.random() * 3 + 1}s`;
+
+        starsContainer.appendChild(star);
+    }
+}
+
+// Generate 100 stars
+createStars(100);
+
+
+// // Function to generate random position for stars
+// function randomPosition(starElement) {
+//     const screenWidth = window.innerWidth;
+//     const screenHeight = window.innerHeight;
+
+//     // Random horizontal (left) and vertical (top) position
+//     const randomLeft = Math.random() * screenWidth;
+//     const randomTop = Math.random() * screenHeight;
+
+//     // Apply the random positions
+//     starElement.style.left = `${randomLeft}px`;
+//     starElement.style.top = `${randomTop}px`;
+
+//     // Repeat the random position every 10 seconds (or change duration as needed)
+//     setTimeout(() => randomPosition(starElement), 10000);
+// }
+
+// // Create stars and apply random movement
+// document.querySelectorAll('.star').forEach(star => {
+//     randomPosition(star);
+// });
+
+function createMeteor() {
+    const meteor = document.createElement("div");
+    meteor.classList.add("meteor");
+  
+    // Randomize start position outside the frame
+    meteor.style.top = `-${Math.random() * 300}px`; // Start well above the screen
+    meteor.style.left = `${Math.random() * window.innerWidth - 300}px`; // Start slightly off-screen horizontally
+  
+    // Randomize animation duration for variability
+    const duration = Math.random() * 2 + 3; // Between 3s and 5s
+    meteor.style.animationDuration = `${duration}s`;
+  
+    // Append meteor to the container
+    starsContainer.appendChild(meteor);
+  
+    // Remove meteor after animation ends
+    meteor.addEventListener("animationend", () => meteor.remove());
+  }
+  
+  function meteorShower() {
+    setInterval(() => createMeteor(), 2000); // Create a meteor every 2 seconds for lower density
+  }
+  
+  // Initialize the meteor shower
+  meteorShower();
+  
+
 document.getElementById("uploadForm").addEventListener("submit", async (event) => {
     event.preventDefault();
   
