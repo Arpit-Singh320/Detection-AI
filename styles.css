@@ -6,17 +6,105 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f4f4f4; /* Light neutral background */
-    color: #333; /* Dark text for readability */
+    background-color: #000000; /* Pure black background */
+    color: #f8f6f6; /* White text color for contrast */
+    overflow: hidden; /* Prevent scrollbars caused by stars animation */
+}
+  
+h1 {
+    text-shadow: 0 0 5px #FFF, 0 0 10px #f0e293, 0 0 20px #f0e293, 0 0 40px #f0e293;
+    animation: glow 1.5s infinite alternate;
+  }
+  
+  @keyframes glow {
+    from {
+      text-shadow: 0 0 5px #f0e293, 0 0 10px #f0e293, 0 0 20px #f0e293;
+    }
+    to {
+      text-shadow: 0 0 15px #f0e293, 0 0 30px #f0e293, 0 0 60px #f0e293;
+    }
+  }
+  
+
+.stars {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    z-index: 1;
+    overflow: hidden;
 }
 
+@keyframes twinkling {
+    0% {
+        opacity: 0.5;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.5); /* Increased scale for more visible twinkling */
+    }
+    100% {
+        opacity: 0.5;
+        transform: scale(1);
+    }
+}
+
+@keyframes moveStars {
+    0% {
+        top: 0;
+        left: 0;
+    }
+    100% {
+        top: 100vh;
+        left: 100vw;
+    }
+}
+
+.star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 70%;
+    animation: twinkling 2s infinite ease-in-out;
+}
+
+.meteor {
+    position: absolute;
+    width: 2px;
+    height: 60px;
+    background: linear-gradient(0deg, white, rgba(255, 255, 255, 0));
+    opacity: 0.7;
+    transform: rotate(45deg);
+    animation: shootingDiagonal 2s linear infinite; /* Slower animation for smoothness */
+}
+
+@keyframes shootingDiagonal {
+    0% {
+        opacity: 0;
+        transform: translateX(0) translateY(0) rotate(-45deg);
+    }
+    20% {
+        opacity: 1; /* Gradual appearance */
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(180vw) translateY(180vh) rotate(-45deg); /* Moves far outside the screen */
+    }
+}
+
+
+
 .container {
+    position: relative;
+    z-index: 2; /* Bring container above stars */
     text-align: center;
-    background: #ffffff; /* White background for the container */
-    color: #333; /* Dark text for readability */
+    background: #050816; /* Dark blue background for the container */
+    color: #ffffff; /* White text for readability */
     padding: 30px;
     border-radius: 12px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 20px rgba(255, 255, 255, 0.1), 0 0 10px rgba(255, 255, 255, 0.3); /* Added white glow */
     width: 400px;
     animation: fadeIn 1.2s ease-in-out;
 }
@@ -30,94 +118,4 @@ body {
         opacity: 1;
         transform: scale(1);
     }
-}
-
-h1 {
-    margin-bottom: 10px;
-    font-size: 1.8em;
-    color: #2c3e50; /* Darker shade for the heading */
-}
-
-p {
-    font-size: 14px;
-    margin-bottom: 20px;
-    color: #555; /* Slightly lighter for paragraph text */
-}
-
-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-input[type="file"] {
-    display: none;
-}
-
-.custom-file-upload {
-    display: inline-block;
-    padding: 10px 20px;
-    cursor: pointer;
-    background-color: #3498db; /* Solid blue color */
-    color: #fff;
-    border-radius: 5px;
-    font-size: 14px;
-    margin-bottom: 20px;
-    transition: all 0.3s ease-in-out;
-}
-
-.custom-file-upload:hover {
-    background-color: #2980b9; /* Darker blue on hover */
-}
-
-button {
-    padding: 12px 20px;
-    border: none;
-    background-color: #e74c3c; /* Solid red color */
-    color: white;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.25);
-}
-
-#uploadMessage {
-    margin-top: 15px;
-    font-size: 14px;
-    color: #4caf50; /* Green color for success messages */
-}
-
-#responseContainer,
-#objectCount {
-    margin-top: 20px;
-    text-align: center;
-}
-
-canvas {
-    display: block;
-    margin: 0 auto;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-}
-
-#responseContainer {
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-canvas {
-    max-width: 100%;
-    height: auto;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
