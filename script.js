@@ -3,11 +3,6 @@ const starsContainer = document.createElement("div");
 starsContainer.classList.add("stars");
 document.body.appendChild(starsContainer);
 
-require('dotenv').config();
-
-const apiKey = process.env.API_KEY;
-console.log(apiKey);
-
 // Generate random stars
 function createStars(count) {
     for (let i = 0; i < count; i++) {
@@ -127,7 +122,7 @@ document.getElementById("uploadForm").addEventListener("submit", async (event) =
           const response = await fetch("https://api-inference.huggingface.co/models/facebook/detr-resnet-50", {
             method: "POST",
             headers: {
-              Authorization: "Bearer API_KEY",
+              Authorization: "Bearer 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",
               "Content-Type": "application/octet-stream",
             },
             body: await file.arrayBuffer(),
